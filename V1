@@ -1,0 +1,60 @@
+local scriptParent = script.Parent.CalcBase
+
+local SubButton = scriptParent.Submit
+local MinButton = scriptParent.Minus
+local PlusButton = scriptParent.Plus
+local DiviButton = scriptParent.Divide
+local MultiButton = scriptParent.Multi
+local BetweenText = scriptParent.Between
+local firstnumber = scriptParent.First
+local secondnumber = scriptParent.Second
+local answer = scriptParent.Answer
+
+SubButton.MouseButton1Click:Connect(function()
+	local firstone = tonumber(firstnumber.Text)
+	local secondone = tonumber(secondnumber.Text)
+	
+	if BetweenText.Text == "+" then 
+		local actualanswer = firstone + secondone
+		answer.Text = tostring(actualanswer)
+	end
+	
+	if BetweenText.Text == "-" then 
+		local actualanswer = firstone - secondone
+		answer.Text = tostring(actualanswer)
+	end
+	
+	if BetweenText.Text == "*" then 
+		local actualanswer = firstone * secondone
+		answer.Text = tostring(actualanswer)
+	end
+	
+	if BetweenText.Text == "/" then
+		if firstone == "0" then
+			answer.Text = "ERROR"
+		else
+			if secondone == "0" then
+				answer.Text = "ERROR"
+			else
+				local actualanswer = firstone / secondone
+				answer.Text = tostring(actualanswer)
+			end
+		end
+	end
+end)
+
+PlusButton.MouseButton1Click:Connect(function()
+	BetweenText.Text = "+"
+end)
+
+MinButton.MouseButton1Click:Connect(function()
+	BetweenText.Text = "-"
+end)
+
+MultiButton.MouseButton1Click:Connect(function()
+	BetweenText.Text = "*"
+end)
+
+DiviButton.MouseButton1Click:Connect(function()
+	BetweenText.Text = "/"
+end)
